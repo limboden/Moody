@@ -11,7 +11,7 @@ interface UserAttributes {
 	bio: string | null;
 }
 
-interface UserCreationAttributes extends UserAttributes {}
+interface UserCreationAttributes extends _Optional<UserAttributes, "id"> {}
 
 export class User
 	extends Model<UserAttributes, UserCreationAttributes>
