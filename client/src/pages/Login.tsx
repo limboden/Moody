@@ -1,10 +1,34 @@
 // import React from "react"
 // TODO: Implement context stuff
 // TODO: Import User
+// import User from "../interfaces/User";
+
+import { useState } from "react";
 
 const Login = () => {
-  // TODO: Create input variables using useState
-  // TODO: Create functions to validate input
+	// input variables using useState
+	const [username, setUsername] = useState('');
+	const [password, setPassword] = useState('');
+	const [warning, setWarning] =useState('');
+	// validate input
+
+	function onUsernameChange(e:any) {
+		if (e.target.value == '')
+			setWarning(warning + '\nYour username is empty');
+		else setWarning('');
+		
+		setUsername(e.target.value);
+	}
+	function onPasswordChange(e:any) {
+		if (e.target.value == '')
+			setWarning(warning +'\nYour password is empty');
+		else setWarning('');
+		setPassword(e.target.value);
+	}
+	function submit() {
+
+	}
+
 	return (
 		<div className="container text-center">
 			<img
@@ -14,7 +38,7 @@ const Login = () => {
 			/>
 			<h1>Log in to Moody</h1>
 			<form>
-        <div className="warnings"></div>
+				<div className="warnings">{warning}</div>
 				<div className="mb-3">
 					<label htmlFor="inpUsername" className="form-label text-primary">
 						Username
@@ -24,11 +48,11 @@ const Login = () => {
 						className="form-control"
 						id="inpUsername"
 						placeholder="Enter your username"
+						value={username}
+						onChange={onUsernameChange}
 					/>
 				</div>
-        <div className="container">
-          
-        </div>
+				<div className="container"></div>
 				<div className="mb-3">
 					<label htmlFor="inpPassword" className="form-label text-primary">
 						Password
@@ -38,9 +62,11 @@ const Login = () => {
 						className="form-control"
 						id="inpPassword"
 						placeholder="Password"
+						value={password}
+						onChange={onPasswordChange}
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-primary" onClick={submit}>
 					Login
 				</button>
 			</form>
