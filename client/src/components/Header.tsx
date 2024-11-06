@@ -2,7 +2,13 @@
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div className="">
+      <img
+				src="../../public/favicon.svg"
+				alt="Moody Logo"
+				className="header-logo"
+			/>
+    </div>
   )
 }
 
