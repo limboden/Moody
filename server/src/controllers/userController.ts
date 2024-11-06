@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import User from '../models/User';
+import { User } from '../models/index';
 import bcrypt from 'bcrypt';  // For password hashing
 
 // Create a new user
@@ -18,7 +18,6 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
             email,
             location,
             bio,
-            created_at: new Date().toISOString(),
         });
         
         res.status(201).json({ message: 'User created successfully', user: newUser });
