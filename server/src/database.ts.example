@@ -1,9 +1,11 @@
 import { Sequelize } from 'sequelize';
 
-export const seq = new Sequelize({
-    dialect: 'postgres',
-    host: 'localhost',
-    username: 'your_username',
-    password: 'your_password',
-    database: 'moody_db',
-});
+export const seq = env.DB_URL
+	? new Sequelize(env.DB_URL)
+	: new Sequelize({
+			host: "localhost",
+			dialect: "postgres",
+			username: env.DB_USER || "postgres",
+			password: env.DB_PASS || "rootroot",
+			database: env.DB_DATABASE,
+	  });
