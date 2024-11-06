@@ -1,0 +1,19 @@
+@use 'src/styles/variables.scss';
+/* Example for a custom font (replace with your own font's path and name) */
+@font-face {
+    font-family: 'Roboto';
+    src: url('src/assets/fonts/Roboto-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+.light {
+    color: black;
+}
+.dark {
+    color: white;
+}
+p {
+    font-family: 'Roboto', 'Arial', sans-serif;
+}
