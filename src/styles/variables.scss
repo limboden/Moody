@@ -1,19 +1,23 @@
 $colors: (
 	primary: #19c6f4,
-	primary-darker: #079cf1,
 	secondary: #1978f4,
-	secondary-darker: #1c41e6,
+);
+
+$btn-colors: (
+	primary: map-get($colors, primary),
+	secondary: map-get($colors, secondary),
 	success: #28a745,
-	warning: #e8ff15,
 	danger: #dc3545,
+	warning: #ffc107,
+	info: #17a2b8,
 );
 
 $background-colors: (
 	light: #dfdfdf,
-	dark: #171717
+	dark: #171717,
 );
 
 $text-colors: (
-    light: black,
-    dark:white,
+	light: black,
+	dark: white,
 );

@@ -2,7 +2,7 @@ import '../src/styles/main.scss';
 function App() {
 
   return (
-    <div className='dark'>
+    <div className='theme-dark'>
       <div className="btn-primary">Test</div>
     </div>
   )

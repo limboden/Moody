@@ -17,16 +17,14 @@
 }
 
 // Dynamically create classes
-
 @each $bgName, $bgColor in variables.$background-colors {
     @each $textName, $textColor in variables.$text-colors{
-        .#{$bgName} {
+        .theme-#{$bgName} {
             color: $textColor;
             background-color: $bgColor;
         }
     }
 }
-
 
 @each $name, $color in variables.$background-colors {
 	.bg-#{$name} {
@@ -41,7 +39,7 @@
     }
 }
 
-@each $name, $color in variables.$colors {
+@each $name, $color in variables.$btn-colors {
     .btn-#{$name} {
         @extend .btn;
         background-color: $color;
