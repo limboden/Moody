@@ -1,4 +1,8 @@
-import { Sequelize } from 'sequelize';
+import dotenv from "dotenv";
+dotenv.config();
+import { Sequelize } from "sequelize";
+
+const env = process.env;
 
 export const seq = env.DB_URL
 	? new Sequelize(env.DB_URL)
