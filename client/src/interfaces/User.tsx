@@ -1,11 +1,11 @@
 export default interface User {
     id:string,
     username:string,
-    first_name:string|undefined,
-    last_name:string|undefined,
+    first_name:string|null,
+    last_name:string|null,
     password:string,
-    email:string|undefined,
-    location:string|undefined,
-    bio:string|undefined,
+    email:string|null,
+    location:string|null,
+    bio:string|null,
     created_at:string;
 }

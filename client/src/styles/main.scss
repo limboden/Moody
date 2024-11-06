@@ -1,7 +1,7 @@
 @use "variables";
 @use "sass:map";
-// @use "bootstrap/scss/bootstrap"; //apparently doesn't work yet
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@use "bootstrap/scss/bootstrap"; //apparently doesn't work yet
+// @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 /* Example for a custom font (replace with your own font's path and name) */
 @font-face {
