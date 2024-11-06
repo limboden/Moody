@@ -1,4 +1,4 @@
-@use "./variables.scss";
+@use "variables";
 /* Example for a custom font (replace with your own font's path and name) */
 @font-face {
 	font-family: "Roboto";
@@ -7,23 +7,36 @@
 	font-style: normal;
 }
 
+:root{
+    font-family: "Roboto", "Arial", sans-serif;
+}
+
 .light {
 	color: black;
 }
 .dark {
 	color: white;
 }
-p {
-	font-family: "Roboto", "Arial", sans-serif;
-}
-
 .bg {
 	background-color: transparent;
 }
+.btn {
+    background-color: transparent;
+    width: fit-content;
+    padding: 1em;
+    border-radius: .5em;
+}
 
 // Dynamically create classes based on color
-// @each $name, $color in $background-colors {
-// 	.bg-#{$name} {
-// 		background-color: $color;
-// 	}
-// }
+@each $name, $color in variables.$background-colors {
+	.bg-#{$name} {
+		background-color: $color;
+	}
+}
+
+@each $name, $color in variables.$colors {
+    .btn-#{$name} {
+        @extend .btn;
+        background-color: $color;
+    }
+}

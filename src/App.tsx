@@ -3,7 +3,7 @@ function App() {
 
   return (
     <>
-      <p>Test nice</p>
+      <div className="btn-primary">Test</div>
     </>
   )
 }
