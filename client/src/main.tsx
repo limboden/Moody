@@ -5,6 +5,7 @@ import { StrictMode } from 'react'
 // Pages
 import App from './App'
 import Home from './pages/Home'
+import Login from './pages/Login'
 
 // Creates available paths
 const router = createBrowserRouter([
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     element: <App />, // the component where the paths are rendered
     children: [
       { path: '/', element: <Home /> },
+      { path: '/login', element: <Login /> },
       // TODO: Create more paths
     ],
   },
@@ -20,6 +22,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router}/>
   </StrictMode>
 )

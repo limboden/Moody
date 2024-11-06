@@ -22,4 +22,6 @@ $background-colors: (
 $text-colors: (
 	light: black,
 	dark: white,
+	primary: map.get($colors, primary),
+	secondary: map.get($colors, secondary),
 );

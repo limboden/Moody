@@ -1,6 +1,6 @@
-@use "variables";
 @use "sass:map";
-@use "bootstrap/scss/bootstrap"; //apparently doesn't work yet
+@use "bootstrap/scss/bootstrap"; //apparently doesn't work to compile yet
+@use "variables";
 // @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 /* Example for a custom font (replace with your own font's path and name) */
@@ -19,6 +19,10 @@
 	background-color: transparent;
 }
 
+.login-logo{
+    width: 150px;
+}
+
 // Dynamically create classes
 @each $bgName, $bgColor in variables.$background-colors {
     .theme-#{$bgName} {
@@ -30,19 +34,19 @@
 @each $name, $color in variables.$background-colors {
 	.bg-#{$name} {
         @extend .bg;
-		background-color: $color;
+		background-color: $color !important;
 	}
 }
 
 @each $name, $color in variables.$text-colors {
     .text-#{$name}{
-        color: $color;
+        color: $color !important;
     }
 }
 
 @each $name, $color in variables.$btn-colors {
     .btn-#{$name} {
         @extend .btn;
-        background-color: $color;
+        background-color: $color !important;
     }
 }

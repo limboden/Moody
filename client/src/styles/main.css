@@ -1,0 +1,69 @@
+@font-face {
+	font-family: "Roboto";
+	src: url("src/assets/fonts/Roboto-Regular.ttf") format("ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+:root {
+	font-family: "Roboto", "Arial", sans-serif;
+}
+
+.bg,
+.bg-dark,
+.bg-light {
+	background-color: transparent;
+}
+
+.login-logo {
+	width: 150px;
+}
+
+.theme-light {
+	background-color: #dfdfdf;
+	color: black;
+}
+
+.theme-dark {
+	background-color: #171717;
+	color: white;
+}
+
+.bg-light {
+	background-color: #dfdfdf;
+}
+
+.bg-dark {
+	background-color: #171717;
+}
+
+.text-light {
+	color: black;
+}
+
+.text-dark {
+	color: white;
+}
+
+.btn-primary {
+	background-color: #19c6f4;
+}
+
+.btn-secondary {
+	background-color: #1978f4;
+}
+
+.btn-success {
+	background-color: #28a745;
+}
+
+.btn-danger {
+	background-color: #dc3545;
+}
+
+.btn-warning {
+	background-color: #ffc107;
+}
+
+.btn-info {
+	background-color: #17a2b8;
+}
