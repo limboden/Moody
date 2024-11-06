@@ -7,8 +7,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Includes Popper.js as wel
 
 function App() {
   // TODO: Use Contexting to return the user either the login page or Outlet depending if they're logged in or not
+  // TODO: Use contexting to change the website theme based on user preference
+  
   return (
-    <div className='theme-dark vh-100'>
+    <div className='theme-dark h-100'>
       <Header />
       <main>
         {/* Renders the matched route component */}
