@@ -2,7 +2,9 @@
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div className="text-center mt-2">
+       © 2024 Moody - All rights reserved
+    </div>
   )
 }
 
