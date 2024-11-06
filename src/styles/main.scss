@@ -1,19 +1,29 @@
-@use 'src/styles/variables.scss';
+@use "./variables.scss";
 /* Example for a custom font (replace with your own font's path and name) */
 @font-face {
-    font-family: 'Roboto';
-    src: url('src/assets/fonts/Roboto-Regular.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
+	font-family: "Roboto";
+	src: url("src/assets/fonts/Roboto-Regular.ttf") format("ttf");
+	font-weight: normal;
+	font-style: normal;
+}
 
 .light {
-    color: black;
+	color: black;
 }
 .dark {
-    color: white;
+	color: white;
 }
 p {
-    font-family: 'Roboto', 'Arial', sans-serif;
+	font-family: "Roboto", "Arial", sans-serif;
 }
+
+.bg {
+	background-color: transparent;
+}
+
+// Dynamically create classes based on color
+// @each $name, $color in $colors {
+// 	.#{$name} {
+// 		background-color: $color;
+// 	}
+// }
