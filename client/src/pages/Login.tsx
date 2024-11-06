@@ -1,6 +1,10 @@
 // import React from "react"
+// TODO: Implement context stuff
+// TODO: Import User
 
 const Login = () => {
+  // TODO: Create input variables using useState
+  // TODO: Create functions to validate input
 	return (
 		<div className="container text-center">
 			<img
@@ -10,6 +14,7 @@ const Login = () => {
 			/>
 			<h1>Log in to Moody</h1>
 			<form>
+        <div className="warnings"></div>
 				<div className="mb-3">
 					<label htmlFor="inpUsername" className="form-label text-primary">
 						Username

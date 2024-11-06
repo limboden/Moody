@@ -1,5 +1,5 @@
 @use "sass:map";
-@use "bootstrap/scss/bootstrap"; //apparently doesn't work to compile yet
+@use "bootstrap/scss/bootstrap" as *; //apparently doesn't work to compile yet
 @use "variables";
 // @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
@@ -21,6 +21,10 @@
 
 .login-logo{
     width: 150px;
+}
+
+.warnings {
+    color: $danger;
 }
 
 // Dynamically create classes

@@ -1,69 +1,17 @@
-@font-face {
-	font-family: "Roboto";
-	src: url("src/assets/fonts/Roboto-Regular.ttf") format("ttf");
-	font-weight: normal;
-	font-style: normal;
-}
-:root {
-	font-family: "Roboto", "Arial", sans-serif;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 2 | @use "bootstrap/scss/bootstrap" as *; //apparently doesn't work to compile yet
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\styles\main.scss 2:1  root stylesheet */
 
-.bg,
-.bg-dark,
-.bg-light {
-	background-color: transparent;
-}
-
-.login-logo {
-	width: 150px;
-}
-
-.theme-light {
-	background-color: #dfdfdf;
-	color: black;
-}
-
-.theme-dark {
-	background-color: #171717;
-	color: white;
-}
-
-.bg-light {
-	background-color: #dfdfdf;
-}
-
-.bg-dark {
-	background-color: #171717;
-}
-
-.text-light {
-	color: black;
-}
-
-.text-dark {
-	color: white;
-}
-
-.btn-primary {
-	background-color: #19c6f4;
-}
-
-.btn-secondary {
-	background-color: #1978f4;
-}
-
-.btn-success {
-	background-color: #28a745;
-}
-
-.btn-danger {
-	background-color: #dc3545;
-}
-
-.btn-warning {
-	background-color: #ffc107;
-}
-
-.btn-info {
-	background-color: #17a2b8;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @use \"bootstrap/scss/bootstrap\" as *; //apparently doesn't work to compile yet\d\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\styles\\main.scss 2:1  root stylesheet";
 }
