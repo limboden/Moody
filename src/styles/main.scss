@@ -1,4 +1,5 @@
 @use "variables";
+@use "bootstrap";
 /* Example for a custom font (replace with your own font's path and name) */
 @font-face {
 	font-family: "Roboto";
@@ -11,27 +12,33 @@
     font-family: "Roboto", "Arial", sans-serif;
 }
 
-.light {
-	color: black;
-}
-.dark {
-	color: white;
-}
 .bg {
 	background-color: transparent;
 }
-.btn {
-    background-color: transparent;
-    width: fit-content;
-    padding: 1em;
-    border-radius: .5em;
+
+// Dynamically create classes
+
+@each $bgName, $bgColor in variables.$background-colors {
+    @each $textName, $textColor in variables.$text-colors{
+        .#{$bgName} {
+            color: $textColor;
+            background-color: $bgColor;
+        }
+    }
 }
 
-// Dynamically create classes based on color
+
 @each $name, $color in variables.$background-colors {
 	.bg-#{$name} {
+        @extend .bg;
 		background-color: $color;
 	}
+}
+
+@each $name, $color in variables.$text-colors {
+    .text-#{$name}{
+        color: $color;
+    }
 }
 
 @each $name, $color in variables.$colors {
