@@ -1,7 +1,14 @@
-$primary: #19c6f4;
-$primary-darker: #079cf1;
-$secondary: #1978f4;
-$secondary-darker: #1c41e6;
-$success: #28a745;
-$warning: #e8ff15;
-$danger: #dc3545;
+$colors: (
+	primary: #19c6f4,
+	primary-darker: #079cf1,
+	secondary: #1978f4,
+	secondary-darker: #1c41e6,
+	success: #28a745,
+	warning: #e8ff15,
+	danger: #dc3545,
+);
+
+$background-colors: (
+	light: #dfdfdf,
+	dark: #171717
+);

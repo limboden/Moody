@@ -22,8 +22,8 @@ p {
 }
 
 // Dynamically create classes based on color
-// @each $name, $color in $colors {
-// 	.#{$name} {
+// @each $name, $color in $background-colors {
+// 	.bg-#{$name} {
 // 		background-color: $color;
 // 	}
 // }
