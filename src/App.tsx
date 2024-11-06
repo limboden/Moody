@@ -1,11 +1,9 @@
-import '../src/styles/main.scss';
+import "../src/styles/main.scss";
 function App() {
-
-  return (
-    <div className='theme-dark'>
-      <div className="btn-primary">Test</div>
-    </div>
-  )
+	return (
+		<div>
+		</div>
+	);
 }
 
-export default App
+export default App;

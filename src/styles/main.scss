@@ -1,5 +1,8 @@
 @use "variables";
-@use "bootstrap";
+@use "sass:map";
+// @use "bootstrap/scss/bootstrap"; //apparently doesn't work yet
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
 /* Example for a custom font (replace with your own font's path and name) */
 @font-face {
 	font-family: "Roboto";
@@ -18,11 +21,9 @@
 
 // Dynamically create classes
 @each $bgName, $bgColor in variables.$background-colors {
-    @each $textName, $textColor in variables.$text-colors{
-        .theme-#{$bgName} {
-            color: $textColor;
-            background-color: $bgColor;
-        }
+    .theme-#{$bgName} {
+        background-color: $bgColor;
+        color: map.get(variables.$text-colors, #{$bgName});
     }
 }
 

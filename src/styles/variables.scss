@@ -1,11 +1,13 @@
+@use "sass:map";
+
 $colors: (
 	primary: #19c6f4,
 	secondary: #1978f4,
 );
 
 $btn-colors: (
-	primary: map-get($colors, primary),
-	secondary: map-get($colors, secondary),
+	primary: map.get($colors, primary),
+	secondary: map.get($colors, secondary),
 	success: #28a745,
 	danger: #dc3545,
 	warning: #ffc107,
