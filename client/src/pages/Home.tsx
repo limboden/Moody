@@ -32,7 +32,7 @@ const Home: React.FC = () => {
           placeholder="I'm feeling..."
         />
         <div style={style.moodHelp} id="mood-help" className="form-text">We'll never share your mood with anyone else.</div>
-        <input type="submit" />
+        <input type="submit" className="btn-primary" />
       </form>
 
     </div>
