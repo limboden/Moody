@@ -42,6 +42,7 @@ const Login = () => {
 			const data = response.json();
 
 			if (await validateLogin(username, password))
+				// TODO: Do something here
 				console.log(data);
 			else
 				setWarning("Wrong username or password");
@@ -60,14 +61,15 @@ const Login = () => {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					user,
-					pass,
+					username: user,
+					password: pass,
 				}),
 			});
 
 			const data = response.json();
 			console.log(`validateLogin = ${data}`);
-
+			
+			// TODO: might not be the right return
 			if (response.ok) return true;
 			else return false;
 
@@ -122,8 +124,10 @@ const Login = () => {
 						/>
 					</div>
 				</div>
-				<div className="row mb-3 justify-content-center">
+				<div className="row justify-content-center">
 					Don't have an account yet?
+				</div>
+				<div className="mb-3">
 					<Link to="/register">Register here</Link>
 				</div>
 				<div className="row justify-content-center">

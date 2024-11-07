@@ -25,17 +25,62 @@ const Register = () => {
 		setPassword(e.target.value);
 	}
 	function onPasswordConfirmChange(e: any) {
-		if (e.target.value == "")
-			setWarning("Your confirm password is empty");
+		if (e.target.value == "") setWarning("Your confirm password is empty");
 		else setWarning("");
 		setPasswordConfirm(e.target.value);
 	}
-	function submit() {}
+
+	async function submit(e: any) {
+		e.preventDefault();
+		if (username == "" || password == "" || passwordConfirm == "") {
+			setWarning(
+				"You have an empty field, please fill it out before registering"
+			);
+			return;
+		}
+		// check if the passwords are the same
+		try {
+			if (password === passwordConfirm) {
+				// check if the username already exists in the database
+				const response = await fetch(`/api/user/${username}`, {
+					headers: {
+						"Content-Type": "application/json",
+					},
+				});
+
+				// if user was found, error
+				if (response.ok) {
+					setWarning("An account with that username already exists");
+					return;
+				}
+				// if not, create user
+				const createResponse = await fetch("/api/users", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						username: username,
+						password: password,
+					}),
+				});
+
+				// if bad response, error
+				if (!createResponse.ok) {
+					throw new Error("There was a problem with creating the account");
+				}
+			} else {
+				setWarning("Your passwords do not match");
+			}
+		} catch (error: any) {
+			throw new Error("There was a problem with trying to register the user");
+		}
+	}
 
 	return (
 		<div className="container text-center pt-5 vh-100">
 			<h1>Welcome to</h1>
-			<img src="Moody_text_colored.svg" alt="Moody Logo" className="w-25"/>
+			<img src="Moody_text_colored.svg" alt="Moody Logo" className="w-25" />
 			<form>
 				<div className="warnings mb-4">{warning}</div>
 
@@ -90,8 +135,10 @@ const Register = () => {
 						/>
 					</div>
 				</div>
-				<div className="row mb-3 justify-content-center">
+				<div className="row justify-content-center">
 					Already have an account?
+				</div>
+				<div className="mb-3">
 					<Link to="/login">Login here</Link>
 				</div>
 				<div className="row justify-content-center">

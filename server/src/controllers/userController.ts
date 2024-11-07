@@ -5,29 +5,19 @@ import bcrypt from "bcrypt"; // For password hashing
 // Create a new user
 export const createUser = async (req: Request, res: Response): Promise<void> => {
 	try {
-		const { username, first_name, last_name, password, email, location, bio } =
-			req.body;
+		const { username, password } = req.body;
 
 		// Hash the password before saving
 		const hashedPassword = await bcrypt.hash(password, 10);
 
 		const newUser = await User.create({
 			username,
-			first_name,
-			last_name,
 			password: hashedPassword,
-			email,
-			location,
-			bio,
 		});
 
-		res
-			.status(201)
-			.json({ message: "User created successfully", user: newUser });
+		res.status(201).json({ message: "User created successfully", user: newUser });
 	} catch (error: any) {
-		res
-			.status(500)
-			.json({ message: "Error creating user", error: error.message });
+		res.status(500).json({ message: "User already exists", error: error.message });
 	}
 };
 
@@ -74,9 +64,7 @@ export const getUserByUsername = async (
 		}
 		res.status(200).json(user);
 	} catch (error: any) {
-		res
-			.status(500)
-			.json({ message: "Error fetching user", error: error.message });
+		res.status(500).json({ message: "Error fetching user", error: error.message });
 	}
 };
 
@@ -84,15 +72,15 @@ export const validateUser = async (
 	req: Request,
 	res: Response
 ): Promise<void> => {
-	const { user, pass } = req.body;
+	const { username, password } = req.body;
 	try {
 		const dbUser = await User.findOne({
-			where: { username: user },
+			where: { username: username },
 		});
 		// if the user has been found
 		if (dbUser) {
 			// compare passwords using bcrypt
-			bcrypt.compare(pass, dbUser.password).then((isMatch) => {
+			bcrypt.compare(password, dbUser.password).then((isMatch) => {
 				// return user object if valid, else, send error
 				if (isMatch) res.status(200).json(dbUser);
 				else res.status(404).json({ message: "Wrong password" });
