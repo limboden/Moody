@@ -8,11 +8,11 @@ const style = {
 };
 
 
-const Home = () => {
+const Home: React.FC = () => {
 
   const [inputValue, setInputValue] = React.useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('Submitted value:', inputValue);
     //store mood in database, also store current datetime. this will be for the history later. 
