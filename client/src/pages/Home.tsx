@@ -22,7 +22,7 @@ const Home: React.FC = () => {
   return (
     <div className="container text-center pt-5 vh-100">
       <form action="" onSubmit={handleSubmit}>
-        <label className="form-label" htmlFor="">How are you feeling today?</label>
+        <label className="form-label" htmlFor="">How are you feeling today? WEEEEEEEEEEEEEEEEEE</label>
         <input
           className="form-control required"
           value={inputValue}
