@@ -30,7 +30,7 @@ const Login = () => {
 	}
 
 	return (
-		<div className="container text-center">
+		<div className="container text-center vh-100 pt-5">
 			<img
 				src="../../public/Moody_logo.svg"
 				alt="Moody Logo"
