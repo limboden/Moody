@@ -13,6 +13,6 @@ router.get('/users', getUsers);
 router.get('/user/:username', getUserByUsername);
 
 // Route for validating user login
-router.get('/login', validateUser);
+router.post('/login', validateUser);
 
 export default router;

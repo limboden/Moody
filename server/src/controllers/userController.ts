@@ -70,6 +70,7 @@ export const getUserByUsername = async (
 		});
 		if (!user) {
 			res.status(404).json({ message: "User not found" });
+			return;
 		}
 		res.status(200).json(user);
 	} catch (error: any) {
@@ -83,13 +84,16 @@ export const validateUser = async (
 	req: Request,
 	res: Response
 ): Promise<void> => {
-	const { username, password } = req.body;
+	const { user, pass } = req.body;
 	try {
 		const dbUser = await User.findOne({
-			where: { username: username },
+			where: { username: user },
 		});
+		// if the user has been found
 		if (dbUser) {
-			bcrypt.compare(password, dbUser.password).then((isMatch) => {
+			// compare passwords using bcrypt
+			bcrypt.compare(pass, dbUser.password).then((isMatch) => {
+				// return user object if valid, else, send error
 				if (isMatch) res.status(200).json(dbUser);
 				else res.status(404).json({ message: "Wrong password" });
 			});
