@@ -5,13 +5,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
 	// input variables using useState
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [passwordConfirm, setPasswordConfirm] = useState("");
 	const [warning, setWarning] = useState("");
-
 	// validate input
+
 	function onUsernameChange(e: any) {
 		if (e.target.value == "") setWarning("Your username is empty");
 		else setWarning("");
@@ -23,71 +24,21 @@ const Login = () => {
 		else setWarning("");
 		setPassword(e.target.value);
 	}
-	async function submit(e: any) {
-		// prevents refreshing
-		e.preventDefault();
-		// get data from server
-		try {
-			const response = await fetch(`/api/user/${username}`, {
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
-
-			// if bad response, error
-			if (!response.ok) {
-				throw new Error("Invalid user API response, check network tab!");
-			}
-			// else, validate information
-			const data = response.json();
-
-			if (await validateLogin(username, password))
-				console.log(data);
-			else
-				setWarning("Wrong username or password");
-
-
-		} catch (error) {
-			console.warn({ message: "there was an error", error: error });
-		}
+	function onPasswordConfirmChange(e: any) {
+		if (e.target.value == "")
+			setWarning("Your confirm password is empty");
+		else setWarning("");
+		setPasswordConfirm(e.target.value);
 	}
-
-	async function validateLogin(user: string, pass: string):Promise<boolean> {
-		try {
-			const response = await fetch("/api/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					user,
-					pass,
-				}),
-			});
-
-			const data = response.json();
-			console.log(`validateLogin = ${data}`);
-
-			if (response.ok) return true;
-			else return false;
-
-		} catch (error) {
-			throw new Error(
-				"Something went wrong with validating the login information"
-			);
-		}
-	}
+	function submit() {}
 
 	return (
 		<div className="container text-center pt-5 vh-100">
-			<img
-				src="../../public/Moody_logo.svg"
-				alt="Moody Logo"
-				className="login-logo"
-			/>
-			<h1>Log in to Moody</h1>
+			<h1>Welcome to</h1>
+			<img src="Moody_text_colored.svg" alt="Moody Logo" className="w-25"/>
 			<form>
 				<div className="warnings mb-4">{warning}</div>
+
 				<div className="row mb-3 justify-content-center">
 					<div className="col-3">
 						<label htmlFor="inpUsername" className="form-label">
@@ -123,8 +74,25 @@ const Login = () => {
 					</div>
 				</div>
 				<div className="row mb-3 justify-content-center">
-					Don't have an account yet?
-					<Link to="/register">Register here</Link>
+					<div className="col-3">
+						<label htmlFor="inpPasswordConfirm" className="form-label">
+							Confirm Password
+						</label>
+					</div>
+					<div className="col-7">
+						<input
+							type="password"
+							className="form-control"
+							id="inpPasswordConfirm"
+							placeholder="Password"
+							value={passwordConfirm}
+							onChange={onPasswordConfirmChange}
+						/>
+					</div>
+				</div>
+				<div className="row mb-3 justify-content-center">
+					Already have an account?
+					<Link to="/login">Login here</Link>
 				</div>
 				<div className="row justify-content-center">
 					<button
@@ -132,7 +100,7 @@ const Login = () => {
 						className="btn btn-primary col-3"
 						onClick={submit}
 					>
-						Login
+						Register
 					</button>
 				</div>
 			</form>
@@ -140,4 +108,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Register;

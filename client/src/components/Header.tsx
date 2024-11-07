@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 const Header = () => {
 	return (
-		<div className="d-flex">
+		<div className="d-flex" style={{backgroundColor:"inherit"}}>
 			<Link to={"/"}>
 				<img
 					src="../../public/favicon.svg"

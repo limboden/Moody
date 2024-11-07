@@ -3,10 +3,7 @@ import { User } from "../models/index";
 import bcrypt from "bcrypt"; // For password hashing
 
 // Create a new user
-export const createUser = async (
-	req: Request,
-	res: Response
-): Promise<void> => {
+export const createUser = async (req: Request, res: Response): Promise<void> => {
 	try {
 		const { username, first_name, last_name, password, email, location, bio } =
 			req.body;
@@ -47,10 +44,7 @@ export const getUsers = async (_req: Request, res: Response): Promise<void> => {
 };
 
 // Get a user by ID
-export const getUserById = async (
-	req: Request,
-	res: Response
-): Promise<void> => {
+export const getUserById = async (req: Request, res: Response): Promise<void> => {
 	try {
 		const user = await User.findByPk(req.params.id);
 		if (!user) {
@@ -72,16 +66,39 @@ export const getUserByUsername = async (
 	try {
 		// req.params.name
 		const user = await User.findOne({
-			where: { username: req.params.name },
+			where: { username: req.params.username },
 		});
 		if (!user) {
 			res.status(404).json({ message: "User not found" });
-			return;
 		}
 		res.status(200).json(user);
 	} catch (error: any) {
 		res
 			.status(500)
 			.json({ message: "Error fetching user", error: error.message });
+	}
+};
+
+export const validateUser = async (
+	req: Request,
+	res: Response
+): Promise<void> => {
+	const { username, password } = req.body;
+	try {
+		const dbUser = await User.findOne({
+			where: { username: username },
+		});
+		if (dbUser) {
+			bcrypt.compare(password, dbUser.password).then((isMatch) => {
+				if (isMatch) res.status(200).json(dbUser);
+				else res.status(404).json({ message: "Wrong password" });
+			});
+		} else {
+			res.status(404).json({ message: "Could not find account" });
+		}
+	} catch (error: any) {
+		res
+			.status(500)
+			.json({ message: "Error validating user", error: error.message });
 	}
 };

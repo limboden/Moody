@@ -7,12 +7,12 @@ const NavBar = () => {
   return (
     <nav className='d-flex container-fluid justify-content-end'>
       <Link to="/" className='text-decoration-none me-3 d-flex align-items-center'>
-        <div className="d-flex bg-primary h-75 align-items-center rounded ps-3 pe-3">
+        <div className="d-flex bg-primary h-50 align-items-center rounded ps-3 pe-3 text-black">
           Home
         </div>
       </Link>
       <Link to="/login" className='text-decoration-none me-3 d-flex align-items-center'>
-        <div className="d-flex bg-primary h-75 align-items-center rounded ps-3 pe-3">
+        <div className="d-flex bg-primary h-50 align-items-center rounded ps-3 pe-3 text-black">
           Login
         </div>
       </Link>
